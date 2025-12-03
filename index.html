@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heritage 3D Lab | Damage. Data. Design.</title>
+    <meta name="description" content="Heritage 3D Lab at Penn State - Leveraging AI to make historic communities resilient through data-driven engineering and social science.">
+    <meta name="author" content="Rebecca Napolitano">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Outfit:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img src="logo.png" alt="Heritage 3D Lab Logo" class="logo-img">
+                <span class="logo-text">Heritage 3D</span>
+            </div>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#home" class="nav-link">Home</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#research" class="nav-link">Research</a></li>
+                <li><a href="#people" class="nav-link">People</a></li>
+                <li><a href="#publications" class="nav-link">Publications</a></li>
+                <li><a href="#teaching" class="nav-link">Teaching</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <canvas id="particleCanvas"></canvas>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1 class="hero-title">
+                <span class="hero-static">This heritage is</span>
+                <span class="hero-rotating" id="rotatingText"></span>
+            </h1>
+            <p class="hero-subtitle">Heritage 3D Lab</p>
+            <p class="hero-tagline">Damage. Data. Design.</p>
+            <div class="hero-cta">
+                <a href="#about" class="btn btn-primary">Discover Our Work</a>
+                <a href="#people" class="btn btn-secondary">Join Our Team</a>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <div class="scroll-arrow"></div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section about-section">
+        <div class="container">
+            <h2 class="section-title">About the Lab</h2>
+            <div class="about-grid">
+                <div class="about-main">
+                    <p class="lead-text">
+                        Existing buildings and historic structures play key roles in the communities they are a part of. 
+                        Not only are they an important part of cultural legacy, but they also are crucial in surmounting 
+                        engineering challenges like the design of sustainable infrastructure, space shortages, increased 
+                        costs of construction, and lowering life cycle costs.
+                    </p>
+                    <p>
+                        My group leverages <strong>AI to reconcile heterogeneous, transdisciplinary data</strong> about 
+                        existing buildings into actionable, explainable information. This synthesized knowledge is then 
+                        used to transform how we interact with structures from the past to make them intelligent, 
+                        resilient, and sustainable cornerstones for cities of the future.
+                    </p>
+                    <p>
+                        This research lies at the <strong>intersection of civil engineering, computer science, and 
+                        historic preservation</strong> to combine physics-based modeling and data-driven modeling.
+                    </p>
+                </div>
+                <div class="about-mission">
+                    <div class="mission-card">
+                        <h3>Our Mission</h3>
+                        <p>
+                            We are creating the scientific pipeline that connects social science, data science, 
+                            engineering simulation, and automated design to make historic communities more resilient.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- What Makes Us Different -->
+            <div class="differentiators">
+                <h3 class="subsection-title">What Makes Us Different</h3>
+                <div class="diff-grid">
+                    <div class="diff-card">
+                        <div class="diff-icon">🔗</div>
+                        <h4>Vertically-Integrated</h4>
+                        <p>
+                            We're not just a data lab or just a social science group. We run the entire research 
+                            pipeline—from field data collection to engineering design to student training.
+                        </p>
+                    </div>
+                    <div class="diff-card">
+                        <div class="diff-icon">📐</div>
+                        <h4>Multi-Scale</h4>
+                        <p>
+                            Our work operates at every level, from macro-scale community policy and social recovery 
+                            to micro-scale simulation of individual masonry components.
+                        </p>
+                    </div>
+                    <div class="diff-card">
+                        <div class="diff-icon">🎯</div>
+                        <h4>Proactive, Not Reactive</h4>
+                        <p>
+                            Our primary goal isn't just to document loss; it's to prevent it. We build predictive 
+                            tools and proven interventions that help communities prepare before disasters hit.
+                        </p>
+                    </div>
+                    <div class="diff-card">
+                        <div class="diff-icon">🤝</div>
+                        <h4>Engineering Meets People</h4>
+                        <p>
+                            Our data science and engineering simulations (the "what") are directly guided by our 
+                            social science (the "why"). We build technical solutions to prevent bad outcomes.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Research Section -->
+    <section id="research" class="section research-section">
+        <div class="container">
+            <h2 class="section-title">Research Areas</h2>
+            <p class="section-intro">
+                Our research focuses on making existing and historic structures intelligent, resilient, 
+                and sustainable through cutting-edge technology and interdisciplinary approaches.
+            </p>
+            
+            <div class="research-grid">
+                <div class="research-card">
+                    <div class="research-icon">📸</div>
+                    <h3>Documentation</h3>
+                    <p class="research-subtitle">Photogrammetry, Laser Scanning, UAV</p>
+                    <p>
+                        We create digital, 3D, scalable models from 2D images using computer vision techniques. 
+                        Our robust, statistics-based methods minimize errors during documentation and have been 
+                        successfully applied to historic structures in the United States, Italy, and Nepal.
+                    </p>
+                </div>
+
+                <div class="research-card">
+                    <div class="research-icon">🔍</div>
+                    <h3>Data Extraction</h3>
+                    <p class="research-subtitle">Eye Tracking, Point Cloud Segmentation, Semantic Segmentation</p>
+                    <p>
+                        We've developed convolutional neural network (CNN) architectures to identify damage in 
+                        masonry structures. Our methods address the complexity of masonry joints, going beyond 
+                        traditional crack identification for concrete and asphalt.
+                    </p>
+                </div>
+
+                <div class="research-card">
+                    <div class="research-icon">📡</div>
+                    <h3>Non-Destructive Evaluation</h3>
+                    <p class="research-subtitle">Ground Penetrating Radar, Structural Health Monitoring</p>
+                    <p>
+                        We develop data-driven and hybrid physics-based models for automated generation of 
+                        structural maps from GPR scans, eliminating tedious manual interpretation while 
+                        preserving building integrity.
+                    </p>
+                </div>
+
+                <div class="research-card">
+                    <div class="research-icon">🔗</div>
+                    <h3>Data Synthesis</h3>
+                    <p class="research-subtitle">Multi-Modal Data Fusion, Factor Analysis</p>
+                    <p>
+                        Using factor analysis and machine learning, we identify underlying patterns in 
+                        heterogeneous datasets, enabling efficient monitoring strategies optimized for 
+                        specific site conditions.
+                    </p>
+                </div>
+
+                <div class="research-card">
+                    <div class="research-icon">⚙️</div>
+                    <h3>Physics-Based Modeling</h3>
+                    <p class="research-subtitle">FEM, DEM, Information Theory, Manifold Learning</p>
+                    <p>
+                        We integrate data from documentation, non-destructive evaluation, and physics-based 
+                        modeling to diagnose probable causes of structural damage, combining computational 
+                        efficiency with detailed insights.
+                    </p>
+                </div>
+
+                <div class="research-card">
+                    <div class="research-icon">🏛️</div>
+                    <h3>Historic Construction Analysis</h3>
+                    <p class="research-subtitle">Traditional Techniques, Archaeological Reconstructions</p>
+                    <p>
+                        We study unique historic construction techniques like Roman bonding courses and 
+                        zipper vaults to understand how they function and affect stability analysis, 
+                        crucial for preservation efforts.
+                    </p>
+                </div>
+
+                <div class="research-card">
+                    <div class="research-icon">🌪️</div>
+                    <h3>Resilience of Heritage Structures</h3>
+                    <p class="research-subtitle">Disaster Preparedness, Community Recovery</p>
+                    <p>
+                        We create evidence-based frameworks that connect social science, data science, and 
+                        engineering to help historic communities prepare for, mitigate, and recover from 
+                        disasters.
+                    </p>
+                </div>
+
+                <div class="research-card">
+                    <div class="research-icon">♻️</div>
+                    <h3>Adaptive Reuse & Optimization</h3>
+                    <p class="research-subtitle">Shape Grammar, AI-Driven Design</p>
+                    <p>
+                        We integrate Shape Grammar and Artificial Intelligence to determine optimal design 
+                        solutions for adaptive reuse of historic buildings, considering both structural and 
+                        spatial requirements.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- People Section -->
+    <section id="people" class="section people-section">
+        <div class="container">
+            <h2 class="section-title">Our Team</h2>
+            
+            <!-- Director -->
+            <div class="director-section">
+                <div class="person-card director-card">
+                    <div class="person-content">
+                        <h3>Rebecca Napolitano, PhD</h3>
+                        <p class="person-title">Lab Director | Assistant Professor</p>
+                        <p class="person-affiliation">Department of Architectural Engineering, Penn State University</p>
+                        <p class="person-bio">
+                            Rebecca is the Heritage 3D Lab's director. As an NSF Graduate Fellow, she received her 
+                            Ph.D. in Civil Engineering from Princeton University in 2020. Her work focuses on 
+                            leveraging AI and data science to make historic communities more resilient and sustainable.
+                        </p>
+                        <div class="person-links">
+                            <a href="mailto:nap@psu.edu" class="person-link" title="Email">✉️</a>
+                            <a href="https://orcid.org/0000-0002-8939-5998" target="_blank" class="person-link" title="ORCID">🔗</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Graduate Students -->
+            <h3 class="subsection-title">Graduate Students</h3>
+            <div class="people-grid">
+                <div class="person-card">
+                    <div class="person-content">
+                        <h4>Joe Kallas</h4>
+                        <p class="person-title">PhD Student</p>
+                        <p class="person-bio">
+                            Architect and Cultural Heritage Specialist with master's degrees in Architecture and 
+                            Heritage Preservation. UNESCO International expert conducting damage assessments in 
+                            Ukraine and Syria. Research focuses on Computer Vision and AI for automated structural 
+                            assessments of historic buildings.
+                        </p>
+                        <div class="person-links">
+                            <a href="mailto:jkallas@psu.edu" class="person-link" title="Email">✉️</a>
+                            <a href="https://scholar.google.com/citations?user=cjMP6pwAAAAJ&hl=en" target="_blank" class="person-link" title="Google Scholar">🎓</a>
+                            <a href="https://www.linkedin.com/in/joekallas" target="_blank" class="person-link" title="LinkedIn">💼</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="person-card">
+                    <div class="person-content">
+                        <h4>Ahmed Nirjhar Alam</h4>
+                        <p class="person-title">PhD Student, Material Science</p>
+                        <p class="person-bio">
+                            From Bangladesh with a background in Mechanical Engineering. Currently working on 
+                            interpreting structural health diagnostics data using data-driven methods.
+                        </p>
+                        <div class="person-links">
+                            <a href="mailto:aqa6199@psu.edu" class="person-link" title="Email">✉️</a>
+                            <a href="https://scholar.google.com/citations?user=_kj7JN0AAAAJ&hl=en&oi=sra" target="_blank" class="person-link" title="Google Scholar">🎓</a>
+                            <a href="https://github.com/aa0111" target="_blank" class="person-link" title="GitHub">💻</a>
+                            <a href="https://www.linkedin.com/in/nirjhar-alam/" target="_blank" class="person-link" title="LinkedIn">💼</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="person-card">
+                    <div class="person-content">
+                        <h4>Saanchi Singh Kaushal</h4>
+                        <p class="person-title">PhD Student</p>
+                        <p class="person-bio">
+                            From India with degrees in Civil Engineering and Historic Building Conservation. 
+                            Conducted post-event reconnaissance after Midwest Tornadoes (Dec 2021). Research 
+                            focuses on dimensionality reduction techniques to assess building attribute impacts 
+                            on damage states.
+                        </p>
+                        <div class="person-links">
+                            <a href="mailto:ssk5511@psu.edu" class="person-link" title="Email">✉️</a>
+                            <a href="https://github.com/SaanchiSK" target="_blank" class="person-link" title="GitHub">💻</a>
+                            <a href="http://www.linkedin.com/in/saanchisinghkaushal" target="_blank" class="person-link" title="LinkedIn">💼</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="person-card">
+                    <div class="person-content">
+                        <h4>Muhammad Rakeh Saleem</h4>
+                        <p class="person-title">PhD Student</p>
+                        <p class="person-bio">
+                            From Pakistan, CAYSS Graduate Fellow with a master's from Chung-Ang University, South 
+                            Korea. Works on expert knowledge capture and damage detection using eye-tracking and 
+                            computer vision. Interests include ML, UAV infrastructure inspection, and wireless sensors.
+                        </p>
+                        <div class="person-links">
+                            <a href="mailto:rakeh@psu.edu" class="person-link" title="Email">✉️</a>
+                            <a href="https://scholar.google.com/citations?user=sNDGyTYAAAAJ&hl=en" target="_blank" class="person-link" title="Google Scholar">🎓</a>
+                            <a href="https://github.com/rakehsaleem" target="_blank" class="person-link" title="GitHub">💻</a>
+                            <a href="https://www.linkedin.com/in/rakeh-saleem/" target="_blank" class="person-link" title="LinkedIn">💼</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="person-card">
+                    <div class="person-content">
+                        <h4>Daniele Melo Santos Paulino</h4>
+                        <p class="person-title">PhD Student</p>
+                        <p class="person-bio">
+                            From Brazil with a master's from University of São Paulo. Research focuses on structural 
+                            optimization and adaptive reuse of existing infrastructure, integrating Shape Grammar 
+                            and AI to determine best design solutions for historic building adaptive reuse.
+                        </p>
+                        <div class="person-links">
+                            <a href="mailto:dmp6278@psu.edu" class="person-link" title="Email">✉️</a>
+                            <a href="https://scholar.google.com.br/citations?hl=pt-BR&user=WdY3gnwAAAAJ" target="_blank" class="person-link" title="Google Scholar">🎓</a>
+                            <a href="https://github.com/danimspaulino" target="_blank" class="person-link" title="GitHub">💻</a>
+                            <a href="https://www.linkedin.com/in/daniele-paulino9/" target="_blank" class="person-link" title="LinkedIn">💼</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Publications Section -->
+    <section id="publications" class="section publications-section">
+        <div class="container">
+            <h2 class="section-title">Publications</h2>
+            <p class="section-intro">
+                Our research has been published in leading journals and conferences. 
+                Publications are automatically updated from ORCID.
+            </p>
+            <div id="publicationsList" class="publications-list">
+                <div class="loading">Loading publications...</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Teaching Section -->
+    <section id="teaching" class="section teaching-section">
+        <div class="container">
+            <h2 class="section-title">Teaching</h2>
+            <p class="section-intro">
+                We are committed to training the next generation of engineers and researchers in 
+                data-driven approaches to historic preservation and structural engineering.
+            </p>
+            <div class="teaching-content">
+                <div class="teaching-card">
+                    <h3>Courses</h3>
+                    <p>Information about courses taught by Dr. Napolitano will be updated here.</p>
+                </div>
+                <div class="teaching-card">
+                    <h3>Student Opportunities</h3>
+                    <p>
+                        We welcome motivated students interested in the intersection of AI, structural 
+                        engineering, and historic preservation. If you're interested in joining our lab, 
+                        please reach out via email.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section contact-section">
+        <div class="container">
+            <h2 class="section-title">Get In Touch</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>Heritage 3D Lab</h3>
+                    <p>Department of Architectural Engineering</p>
+                    <p>Penn State University</p>
+                    <p class="contact-email">
+                        <strong>Email:</strong> 
+                        <a href="mailto:nap@psu.edu">nap@psu.edu</a>
+                    </p>
+                </div>
+                <div class="contact-cta">
+                    <p>
+                        Interested in collaborating or learning more about our work? 
+                        We'd love to hear from you.
+                    </p>
+                    <a href="mailto:nap@psu.edu" class="btn btn-primary">Contact Us</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="logo.png" alt="Heritage 3D Lab Logo" class="footer-logo-img">
+                    <p class="footer-tagline">Damage. Data. Design.</p>
+                </div>
+                <div class="footer-links">
+                    <a href="#home">Home</a>
+                    <a href="#about">About</a>
+                    <a href="#research">Research</a>
+                    <a href="#people">People</a>
+                    <a href="#publications">Publications</a>
+                    <a href="mailto:nap@psu.edu">Contact</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Heritage 3D Lab, Penn State University. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
