@@ -173,6 +173,7 @@ img {
 .logo-img {
     height: 40px;
     width: auto;
+    object-fit: contain;
 }
 
 .nav-menu {
@@ -871,6 +872,7 @@ img {
 .footer-logo-img {
     height: 60px;
     width: auto;
+    object-fit: contain;
 }
 
 .footer-tagline {
