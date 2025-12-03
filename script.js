@@ -90,12 +90,16 @@ async function fetchORCIDPublications() {
         // Process and display publications
         const publications = data.group.map(group => {
             const work = group['work-summary'][0];
+            const externalIds = work['external-ids']?.['external-id'] || [];
+            const doi = externalIds.find(id => id['external-id-type'] === 'doi');
+
             return {
                 title: work.title?.title?.value || 'Untitled',
                 year: work['publication-date']?.year?.value || 'N/A',
                 journal: work['journal-title']?.value || '',
-                type: work.type || '',
-                putCode: work['put-code']
+                type: work.type || 'other',
+                putCode: work['put-code'],
+                doi: doi ? doi['external-id-value'] : null
             };
         });
 
@@ -106,20 +110,54 @@ async function fetchORCIDPublications() {
             return yearB - yearA;
         });
 
-        // Show only the 10 most recent publications
-        const recentPublications = publications.slice(0, 10);
+        // Show only the 12 most recent publications
+        const recentPublications = publications.slice(0, 12);
 
-        // Display publications
-        publicationsList.innerHTML = recentPublications.map(pub => `
-            <div class="publication-item">
+        // Helper function to get type badge and icon
+        function getTypeBadge(type) {
+            const types = {
+                'journal-article': { label: 'Journal Article', color: '#3b82f6' },
+                'conference-paper': { label: 'Conference', color: '#8b5cf6' },
+                'book-chapter': { label: 'Book Chapter', color: '#10b981' },
+                'book': { label: 'Book', color: '#f59e0b' },
+                'report': { label: 'Report', color: '#ef4444' },
+                'preprint': { label: 'Preprint', color: '#06b6d4' },
+                'other': { label: 'Publication', color: '#6b7280' }
+            };
+            return types[type] || types['other'];
+        }
+
+        // Display publications with enhanced visual design
+        publicationsList.innerHTML = recentPublications.map(pub => {
+            const badge = getTypeBadge(pub.type);
+            const doiLink = pub.doi ? `https://doi.org/${pub.doi}` : null;
+
+            return `
+            <div class="publication-item" data-type="${pub.type}">
+                <div class="publication-header">
+                    <span class="publication-type-badge" style="background-color: ${badge.color}20; color: ${badge.color}; border-color: ${badge.color}40;">
+                        <span class="badge-dot" style="background-color: ${badge.color};"></span>
+                        ${badge.label}
+                    </span>
+                    <span class="publication-year-badge">${pub.year}</span>
+                </div>
                 <h3 class="publication-title">${pub.title}</h3>
-                ${pub.journal ? `<p class="publication-journal">${pub.journal}</p>` : ''}
-                <p class="publication-year">${pub.year}</p>
+                ${pub.journal ? `<p class="publication-journal"><span class="journal-icon"></span>${pub.journal}</p>` : ''}
+                ${doiLink ? `
+                    <div class="publication-links">
+                        <a href="${doiLink}" target="_blank" class="publication-link">
+                            View Publication →
+                        </a>
+                    </div>
+                ` : ''}
             </div>
-        `).join('') + `
+        `}).join('') + `
             <div class="publication-view-all">
+                <a href="https://orcid.org/0000-0002-8939-5998" target="_blank" class="btn btn-secondary" style="margin-right: 1rem;">
+                    View ORCID Profile
+                </a>
                 <a href="https://scholar.google.com/citations?user=cjMP6pwAAAAJ&hl=en" target="_blank" class="btn btn-primary">
-                    View All Publications on Google Scholar
+                    View All on Google Scholar
                 </a>
             </div>
         `;
@@ -131,6 +169,9 @@ async function fetchORCIDPublications() {
                 <p>Unable to load publications automatically. Please visit 
                 <a href="https://orcid.org/0000-0002-8939-5998" target="_blank" style="color: var(--accent-teal);">
                     ORCID profile
+                </a> or 
+                <a href="https://scholar.google.com/citations?user=cjMP6pwAAAAJ&hl=en" target="_blank" style="color: var(--accent-teal);">
+                    Google Scholar
                 </a> to view publications.</p>
             </div>
         `;
