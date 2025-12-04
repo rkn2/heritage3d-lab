@@ -483,13 +483,7 @@ img {
     color: var(--text-secondary);
 }
 
-.lead-text {
-    font-size: 1.25rem;
-    font-weight: 500;
-    color: var(--text-primary);
-    margin-bottom: var(--spacing-md);
-    line-height: 1.7;
-}
+
 
 .about-main p {
     margin-bottom: var(--spacing-md);
