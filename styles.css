@@ -648,65 +648,167 @@ img {
     background: var(--bg-secondary);
 }
 
-.research-grid {
+.research-tabs-container {
+    margin-bottom: var(--spacing-lg);
+    display: flex;
+    justify-content: center;
+}
+
+.research-tabs {
+    display: flex;
+    gap: var(--spacing-md);
+    background: var(--bg-card);
+    padding: var(--spacing-xs);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.tab-btn {
+    background: transparent;
+    border: none;
+    padding: var(--spacing-sm) var(--spacing-md);
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    transition: all var(--transition-base);
+    min-width: 140px;
+}
+
+.tab-btn:hover {
+    background: rgba(0, 0, 0, 0.03);
+}
+
+.tab-btn.active {
+    background: var(--primary-blue);
+    color: white;
+    box-shadow: var(--shadow-md);
+}
+
+.tab-icon {
+    font-size: 1.5rem;
+    margin-bottom: 4px;
+}
+
+.tab-text {
+    font-weight: 700;
+    font-size: 1.125rem;
+    letter-spacing: 0.05em;
+}
+
+.tab-subtitle {
+    font-size: 0.75rem;
+    opacity: 0.8;
+    font-weight: 500;
+}
+
+/* Specific colors for active tabs if desired, currently using primary blue for all */
+/* 
+.tab-btn[data-tab="damage"].active { background: var(--accent-brick); }
+.tab-btn[data-tab="data"].active { background: var(--primary-blue); }
+.tab-btn[data-tab="design"].active { background: var(--accent-teal); }
+*/
+
+.tab-content-container {
+    position: relative;
+    min-height: 400px;
+    /* Prevent jumpiness */
+}
+
+.tab-pane {
+    display: none;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+.tab-pane.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.research-sub-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: var(--spacing-md);
 }
 
-.research-card {
+.sub-card {
     background: var(--bg-card);
     padding: var(--spacing-lg);
     border-radius: var(--radius-lg);
     box-shadow: var(--shadow-sm);
+    border-left: 4px solid var(--primary-blue);
+    /* Default border color */
     transition: all var(--transition-base);
-    border-left: 4px solid transparent;
+    height: 100%;
 }
 
-.research-card:hover {
+.sub-card:hover {
     transform: translateY(-4px);
-    box-shadow: var(--shadow-lg);
+    box-shadow: var(--shadow-md);
+}
+
+.sub-card h3 {
+    color: var(--primary-blue-dark);
+    margin-bottom: var(--spacing-sm);
+    font-size: 1.25rem;
+}
+
+.sub-card p {
+    color: var(--text-secondary);
+    line-height: 1.6;
+    font-size: 1rem;
+}
+
+/* Color coding for sub-cards based on parent tab context - handled via CSS if we wrap them or just generic */
+#damage .sub-card {
+    border-left-color: var(--accent-brick);
+}
+
+#data .sub-card {
     border-left-color: var(--primary-blue);
 }
 
-.research-icon {
-    font-size: 2.5rem;
-    margin-bottom: var(--spacing-md);
+#design .sub-card {
+    border-left-color: var(--accent-teal);
 }
 
-.research-card h3 {
-    font-size: 1.5rem;
-    margin-bottom: var(--spacing-sm);
-    color: var(--primary-blue-dark);
-}
+/* Mobile adjustments */
+@media (max-width: 768px) {
+    .research-tabs {
+        flex-direction: column;
+        width: 100%;
+    }
 
-.research-subtitle {
-    font-size: 0.875rem;
-    color: var(--accent-teal);
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    margin-bottom: var(--spacing-md);
-}
+    .tab-btn {
+        width: 100%;
+        flex-direction: row;
+        justify-content: flex-start;
+        padding: var(--spacing-md);
+    }
 
-.research-card p {
-    color: var(--text-secondary);
-    line-height: 1.7;
-}
+    .tab-icon {
+        margin-bottom: 0;
+        margin-right: var(--spacing-sm);
+    }
 
-.research-image {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-    border-radius: var(--radius-md);
-    margin-bottom: var(--spacing-md);
-    opacity: 0.9;
-    transition: all var(--transition-base);
-}
-
-.research-card:hover .research-image {
-    opacity: 1;
-    transform: scale(1.02);
+    .tab-text {
+        margin-right: auto;
+    }
 }
 
 /* ===== PEOPLE SECTION ===== */

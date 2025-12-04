@@ -326,3 +326,29 @@ document.addEventListener('DOMContentLoaded', () => {
     // Start auto-rotation
     startAutoRotate();
 });
+
+// ===== RESEARCH TABS =====
+document.addEventListener('DOMContentLoaded', () => {
+    const tabBtns = document.querySelectorAll('.tab-btn');
+    const tabPanes = document.querySelectorAll('.tab-pane');
+
+    if (tabBtns.length === 0) return;
+
+    tabBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            // Remove active class from all buttons and panes
+            tabBtns.forEach(b => b.classList.remove('active'));
+            tabPanes.forEach(p => p.classList.remove('active'));
+
+            // Add active class to clicked button
+            btn.classList.add('active');
+
+            // Show corresponding tab pane
+            const tabId = btn.getAttribute('data-tab');
+            const targetPane = document.getElementById(tabId);
+            if (targetPane) {
+                targetPane.classList.add('active');
+            }
+        });
+    });
+});
