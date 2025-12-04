@@ -1,19 +1,6 @@
-// ===== HERO IMAGE SLIDESHOW =====
-let currentSlide = 0;
-const slides = document.querySelectorAll('.hero-slide');
+// ===== HERO VIDEO BACKGROUND =====
+// Video background is handled via HTML5 video tag with autoplay
 
-function nextSlide() {
-    if (slides.length === 0) return;
-
-    slides[currentSlide].classList.remove('active');
-    currentSlide = (currentSlide + 1) % slides.length;
-    slides[currentSlide].classList.add('active');
-}
-
-// Change slide every 6 seconds
-if (slides.length > 1) {
-    setInterval(nextSlide, 6000);
-}
 
 // ===== NAVIGATION =====
 const navbar = document.getElementById('navbar');
