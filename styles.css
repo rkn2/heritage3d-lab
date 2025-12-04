@@ -518,7 +518,7 @@ img {
 /* ===== CAROUSEL STYLES ===== */
 .carousel-container {
     position: relative;
-    max-width: 800px;
+    max-width: 1200px;
     margin: 0 auto;
     overflow: hidden;
     padding: var(--spacing-sm) 0;
@@ -530,14 +530,35 @@ img {
 }
 
 .diff-card {
-    min-width: 100%;
-    flex: 0 0 100%;
+    /* Default to 1 item per screen (mobile) */
+    --items-per-screen: 1;
+    min-width: calc(100% / var(--items-per-screen));
+    flex: 0 0 calc(100% / var(--items-per-screen));
     background: var(--bg-card);
     padding: var(--spacing-lg);
     border-radius: var(--radius-lg);
     box-shadow: var(--shadow-sm);
     border: 1px solid rgba(0, 0, 0, 0.05);
     text-align: center;
+    /* Add spacing between cards using border-box and padding */
+    box-sizing: border-box;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    background-clip: padding-box;
+}
+
+/* Tablet: 2 items */
+@media (min-width: 768px) {
+    .diff-card {
+        --items-per-screen: 2;
+    }
+}
+
+/* Desktop: 3 items */
+@media (min-width: 1024px) {
+    .diff-card {
+        --items-per-screen: 3;
+    }
 }
 
 .diff-card:hover {

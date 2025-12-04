@@ -213,6 +213,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const totalCards = cards.length;
     let autoRotateInterval;
 
+    function getItemsPerScreen() {
+        if (window.innerWidth >= 1024) return 3;
+        if (window.innerWidth >= 768) return 2;
+        return 1;
+    }
+
     // Create dots
     cards.forEach((_, index) => {
         const dot = document.createElement('div');
@@ -225,9 +231,15 @@ document.addEventListener('DOMContentLoaded', () => {
     const dots = document.querySelectorAll('.dot');
 
     function updateCarousel() {
-        carousel.style.transform = `translateX(-${currentIndex * 100}%)`;
+        const itemsPerScreen = getItemsPerScreen();
+        // Ensure index doesn't go out of bounds when resizing
+        const maxIndex = Math.max(0, totalCards - itemsPerScreen);
+        if (currentIndex > maxIndex) currentIndex = maxIndex;
 
-        // Update dots
+        const translateValue = currentIndex * (100 / itemsPerScreen);
+        carousel.style.transform = `translateX(-${translateValue}%)`;
+
+        // Update dots - highlight the first visible dot
         dots.forEach((dot, index) => {
             if (index === currentIndex) {
                 dot.classList.add('active');
@@ -235,20 +247,42 @@ document.addEventListener('DOMContentLoaded', () => {
                 dot.classList.remove('active');
             }
         });
+
+        // Hide dots that are out of reachable range? 
+        // For simplicity, keep all dots but maybe style them differently or just keep as is.
+        // Actually, let's just keep the active dot logic simple.
     }
 
     function nextSlide() {
-        currentIndex = (currentIndex + 1) % totalCards;
+        const itemsPerScreen = getItemsPerScreen();
+        const maxIndex = Math.max(0, totalCards - itemsPerScreen);
+
+        if (currentIndex < maxIndex) {
+            currentIndex++;
+        } else {
+            currentIndex = 0; // Loop back to start
+        }
         updateCarousel();
     }
 
     function prevSlide() {
-        currentIndex = (currentIndex - 1 + totalCards) % totalCards;
+        const itemsPerScreen = getItemsPerScreen();
+        const maxIndex = Math.max(0, totalCards - itemsPerScreen);
+
+        if (currentIndex > 0) {
+            currentIndex--;
+        } else {
+            currentIndex = maxIndex; // Loop to end
+        }
         updateCarousel();
     }
 
     function goToSlide(index) {
-        currentIndex = index;
+        const itemsPerScreen = getItemsPerScreen();
+        const maxIndex = Math.max(0, totalCards - itemsPerScreen);
+
+        // Clamp index
+        currentIndex = Math.min(index, maxIndex);
         updateCarousel();
         resetAutoRotate();
     }
@@ -277,9 +311,17 @@ document.addEventListener('DOMContentLoaded', () => {
         resetAutoRotate();
     });
 
+    // Handle resize
+    window.addEventListener('resize', () => {
+        updateCarousel();
+    });
+
     // Pause on hover
     carousel.addEventListener('mouseenter', stopAutoRotate);
     carousel.addEventListener('mouseleave', startAutoRotate);
+
+    // Initial update
+    updateCarousel();
 
     // Start auto-rotation
     startAutoRotate();
