@@ -515,30 +515,39 @@ img {
     font-size: 1.125rem;
 }
 
-.diff-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: var(--spacing-md);
+/* ===== CAROUSEL STYLES ===== */
+.carousel-container {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+    overflow: hidden;
+    padding: var(--spacing-sm) 0;
+}
+
+.diff-carousel {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
 }
 
 .diff-card {
+    min-width: 100%;
+    flex: 0 0 100%;
     background: var(--bg-card);
     padding: var(--spacing-lg);
     border-radius: var(--radius-lg);
     box-shadow: var(--shadow-sm);
-    transition: all var(--transition-base);
     border: 1px solid rgba(0, 0, 0, 0.05);
+    text-align: center;
 }
 
 .diff-card:hover {
-    transform: translateY(-4px);
     box-shadow: var(--shadow-md);
 }
 
 .diff-icon-svg {
-    width: 48px;
-    height: 48px;
-    margin-bottom: var(--spacing-md);
+    width: 64px;
+    height: 64px;
+    margin: 0 auto var(--spacing-md);
     color: var(--primary-blue);
 }
 
@@ -558,17 +567,59 @@ img {
     line-height: 1.7;
 }
 
-.diff-summary {
-    grid-column: 1 / -1;
-    text-align: center;
-    font-size: 1.25rem;
-    font-weight: 500;
-    color: var(--text-primary);
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: var(--bg-card);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    color: var(--primary-blue);
+    box-shadow: var(--shadow-sm);
+    transition: all var(--transition-base);
+    z-index: 10;
+}
+
+.carousel-btn:hover {
+    background: var(--primary-blue);
+    color: white;
+    box-shadow: var(--shadow-md);
+}
+
+.prev-btn {
+    left: 0;
+}
+
+.next-btn {
+    right: 0;
+}
+
+.carousel-dots {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
     margin-top: var(--spacing-md);
-    max-width: 800px;
-    margin-left: auto;
-    margin-right: auto;
-    line-height: 1.6;
+}
+
+.dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: all var(--transition-base);
+}
+
+.dot.active {
+    background: var(--primary-blue);
+    transform: scale(1.2);
 }
 
 /* ===== RESEARCH SECTION ===== */
