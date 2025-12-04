@@ -6,6 +6,9 @@
     --primary-blue-light: hsl(200, 60%, 85%);
     --accent-teal: hsl(185, 55%, 50%);
     --accent-brick: hsl(15, 45%, 45%);
+    /* Keeping for legacy, but using new blue for Damage */
+    --accent-blue-deep: hsl(220, 60%, 40%);
+    /* New color for Damage tab */
     --accent-warm: hsl(30, 40%, 60%);
 
     /* Neutral colors */
@@ -755,6 +758,21 @@ img {
     /* Default border color */
     transition: all var(--transition-base);
     height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.sub-card-image {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: var(--radius-md);
+    margin-bottom: var(--spacing-md);
+    transition: transform 0.3s ease;
+}
+
+.sub-card:hover .sub-card-image {
+    transform: scale(1.02);
 }
 
 .sub-card:hover {
@@ -772,11 +790,12 @@ img {
     color: var(--text-secondary);
     line-height: 1.6;
     font-size: 1rem;
+    flex-grow: 1;
 }
 
 /* Color coding for sub-cards based on parent tab context - handled via CSS if we wrap them or just generic */
 #damage .sub-card {
-    border-left-color: var(--accent-brick);
+    border-left-color: var(--accent-blue-deep);
 }
 
 #data .sub-card {
@@ -785,6 +804,19 @@ img {
 
 #design .sub-card {
     border-left-color: var(--accent-teal);
+}
+
+/* Active tab button colors */
+.tab-btn[data-tab="damage"].active {
+    background: var(--accent-blue-deep);
+}
+
+.tab-btn[data-tab="data"].active {
+    background: var(--primary-blue);
+}
+
+.tab-btn[data-tab="design"].active {
+    background: var(--accent-teal);
 }
 
 /* Mobile adjustments */
