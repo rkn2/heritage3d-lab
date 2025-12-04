@@ -476,7 +476,7 @@ img {
 .about-main {
     font-size: 1.125rem;
     line-height: 1.8;
-    font-family: var(--font-sans);
+    font-family: var(--font-primary);
     color: var(--text-secondary);
 }
 
@@ -556,6 +556,19 @@ img {
 .diff-card p {
     color: var(--text-secondary);
     line-height: 1.7;
+}
+
+.diff-summary {
+    grid-column: 1 / -1;
+    text-align: center;
+    font-size: 1.25rem;
+    font-weight: 500;
+    color: var(--text-primary);
+    margin-top: var(--spacing-md);
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.6;
 }
 
 /* ===== RESEARCH SECTION ===== */
@@ -658,14 +671,22 @@ img {
 }
 
 .director-card .person-photo {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: var(--radius-md);
     border: 4px solid rgba(255, 255, 255, 0.3);
-    object-position: top;
+    margin: 0 auto var(--spacing-md);
+    display: block;
 }
 
 .director-card {
     background: var(--gradient-primary);
     color: var(--text-inverse);
     box-shadow: var(--shadow-lg);
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto var(--spacing-xl);
 }
 
 .director-card h3,
