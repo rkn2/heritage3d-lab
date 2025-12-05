@@ -2,149 +2,69 @@
 
 **Damage. Data. Design.**
 
-This is the official website for the Heritage 3D Lab at Penn State University, directed by Dr. Rebecca Napolitano.
+This is the official website for the Heritage 3D Lab at Penn State University.
 
-## About
+## 🛠️ How to Update the Website
 
-The Heritage 3D Lab leverages AI to reconcile heterogeneous, transdisciplinary data about existing buildings into actionable, explainable information. Our research lies at the intersection of civil engineering, computer science, and historic preservation.
+### 1. Adding a New Student
+To add a new graduate student, you need to edit `index.html` and add their photo to the `images/people/` folder.
 
-## Features
+1.  **Add the Photo**:
+    *   Save the student's photo as a `.jpg` or `.png` file.
+    *   Place it in the `images/people/` folder.
+    *   *Tip: Try to use a square or portrait-oriented image for best results.*
 
-- **Dynamic Particle Background**: Animated 3D point cloud visualization
-- **Rotating Hero Text**: Dynamic text showcasing lab values
-- **ORCID Integration**: Automatically pulls publications from ORCID
-- **Responsive Design**: Fully responsive across all devices
-- **Modern UI**: Premium design with glassmorphism and smooth animations
-- **Accessibility**: Semantic HTML and keyboard navigation support
+2.  **Edit `index.html`**:
+    *   Open `index.html` in a text editor (like VS Code or Notepad).
+    *   Search for `<!-- Current Graduate Students -->`.
+    *   Copy an existing "person-card" block (from `<div class="person-card">` to the closing `</div>`).
+    *   Paste it where you want the new student to appear.
+    *   Update the **Name**, **Title**, **Bio**, and **Links** (Email, LinkedIn, Google Scholar).
+    *   Update the `src` attribute of the `<img>` tag to match the new filename (e.g., `images/people/new_student.jpg`).
 
-## Local Development
+### 2. Moving a Student to Alumni
+When a student graduates:
 
-To run this website locally:
+1.  **Cut** their entire "person-card" block from the "Current Graduate Students" section.
+2.  **Paste** it into the "Graduated Students" section (search for `<!-- Graduated Students -->`).
+3.  Update their **Title** (e.g., change "PhD Student" to "PhD, 2025").
 
-1. Clone or download this repository
-2. Open `index.html` in your web browser
-3. Or use a local server:
-   ```bash
-   # Using Python 3
-   python3 -m http.server 8000
-   
-   # Using Node.js
-   npx serve
-   ```
-4. Visit `http://localhost:8000` in your browser
+### 3. Updating Research Areas
+The "Research Areas" section uses a tabbed interface.
 
-## Deployment to GitHub Pages
+*   Search for `<!-- Research Section -->` in `index.html`.
+*   The content for each tab is inside `<div id="damage" class="tab-pane">`, `<div id="data" class="tab-pane">`, etc.
+*   To update text or images, modify the content within the `.sub-card` elements.
+*   **Images**: Research images are stored in `images/research/`.
 
-### Option 1: Deploy to username.github.io
+### 4. Publications
+Publications are **automatically fetched** from Dr. Napolitano's ORCID profile.
+*   You do **not** need to manually add publications to the website.
+*   Just ensure the ORCID profile is up to date.
 
-1. Create a new repository named `username.github.io` (replace `username` with your GitHub username)
-2. Push this code to the repository:
-   ```bash
-   git init
-   git add .
-   git commit -m "Initial commit: Heritage 3D Lab website"
-   git branch -M main
-   git remote add origin https://github.com/username/username.github.io.git
-   git push -u origin main
-   ```
-3. Your site will be live at `https://username.github.io`
+## 📂 Project Structure
 
-### Option 2: Deploy to a Project Repository (heritage3d-lab)
+*   `index.html`: The main page containing all text and layout.
+*   `styles.css`: Controls the look and feel (colors, fonts, mobile layout).
+*   `script.js`: Handles animations and the publication fetcher.
+*   `images/`: Contains all images.
+    *   `people/`: Photos of lab members.
+    *   `research/`: Images for research areas.
 
-1. Create a new repository on GitHub (e.g., `heritage3d-lab`)
-2. Push this code to the repository:
-   ```bash
-   git init
-   git add .
-   git commit -m "Initial commit: Heritage 3D Lab website"
-   git branch -M main
-   git remote add origin https://github.com/username/heritage3d-lab.git
-   git push -u origin main
-   ```
-3. Go to repository Settings → Pages
-4. Under "Source", select "Deploy from a branch"
-5. Select branch: `main` and folder: `/ (root)`
-6. Click Save
-7. Your site will be live at `https://username.github.io/heritage3d-lab`
+## 🚀 Running Locally
 
-## File Structure
+To preview changes on your computer:
 
-```
-website/
-├── index.html          # Main HTML structure
-├── styles.css          # All styling and design system
-├── script.js           # Interactive features and animations
-├── logo.png            # Heritage 3D Lab logo
-└── README.md           # This file
-```
+1.  Open the folder containing these files.
+2.  Double-click `index.html` to open it in your browser.
+3.  *Note: Some features (like loading publications) might require a local server due to browser security settings.*
 
-## Customization
+## 🎨 Colors & Style
 
-### Update Content
-
-- **Team Members**: Edit the People section in `index.html`
-- **Research Areas**: Modify the Research section in `index.html`
-- **Teaching Info**: Update the Teaching section in `index.html`
-- **Contact Email**: Change `nap@psu.edu` to your preferred email
-
-### Update Colors
-
-Colors are defined as CSS variables in `styles.css`:
-```css
-:root {
-    --primary-blue: hsl(200, 65%, 45%);
-    --accent-teal: hsl(185, 55%, 50%);
-    --accent-brick: hsl(15, 45%, 45%);
-    /* ... more colors */
-}
-```
-
-### Update Rotating Text
-
-Edit the `rotatingTexts` array in `script.js`:
-```javascript
-const rotatingTexts = [
-    "Resilient",
-    "Intelligent",
-    "Sustainable",
-    // Add your own words here
-];
-```
-
-## ORCID Integration
-
-Publications are automatically fetched from ORCID (ID: 0000-0002-8939-5998). To change this:
-
-1. Open `script.js`
-2. Find the `fetchORCIDPublications()` function
-3. Update the `orcidId` variable with your ORCID ID
-
-## Browser Support
-
-- Chrome (latest)
-- Firefox (latest)
-- Safari (latest)
-- Edge (latest)
-- Mobile browsers (iOS Safari, Chrome Mobile)
-
-## Performance
-
-The website is optimized for performance:
-- Particle count adjusts based on screen size
-- Animations pause when tab is not visible
-- Lazy loading for scroll animations
-- Optimized CSS with minimal repaints
-
-## License
-
-© 2024 Heritage 3D Lab, Penn State University. All rights reserved.
-
-## Contact
-
-**Dr. Rebecca Napolitano**  
-Email: nap@psu.edu  
-ORCID: [0000-0002-8939-5998](https://orcid.org/0000-0002-8939-5998)
+The website uses a consistent color palette defined in `styles.css`:
+*   **Primary Blue**: `hsl(200, 65%, 45%)` (Used for buttons, links, accents)
+*   **Deep Blue**: `hsl(215, 100%, 35%)` (Used for "Damage" tab)
+*   **Teal**: `hsl(185, 55%, 50%)` (Used for "Design" tab)
 
 ---
-
-Built with ❤️ for historic preservation and community resilience
+© 2025 Heritage 3D Lab, Penn State University.
