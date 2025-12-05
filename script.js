@@ -143,7 +143,7 @@ async function fetchORCIDPublications() {
                 <a href="https://orcid.org/0000-0002-8939-5998" target="_blank" class="btn btn-secondary" style="margin-right: 1rem;">
                     View ORCID Profile
                 </a>
-                <a href="https://scholar.google.com/citations?user=cjMP6pwAAAAJ&hl=en" target="_blank" class="btn btn-primary">
+                <a href="https://scholar.google.com/citations?user=DB5ejLoAAAAJ&hl=en" target="_blank" class="btn btn-primary">
                     View All on Google Scholar
                 </a>
             </div>
@@ -157,7 +157,7 @@ async function fetchORCIDPublications() {
                 <a href="https://orcid.org/0000-0002-8939-5998" target="_blank" style="color: var(--accent-teal);">
                     ORCID profile
                 </a> or 
-                <a href="https://scholar.google.com/citations?user=cjMP6pwAAAAJ&hl=en" target="_blank" style="color: var(--accent-teal);">
+                <a href="https://scholar.google.com/citations?user=DB5ejLoAAAAJ&hl=en" target="_blank" style="color: var(--accent-teal);">
                     Google Scholar
                 </a> to view publications.</p>
             </div>
