@@ -68,3 +68,9 @@ The website uses a consistent color palette defined in `styles.css`:
 
 ---
 © 2025 Heritage 3D Lab, Penn State University.
+
+## 🔗 Additional Links
+- Saanchi's GitHub: https://github.com/saanchi-sk
+
+## ⚙️ Backend Details (Optional)
+The website is a static site (HTML, CSS, JavaScript). No server‑side code is needed for updates such as adding a new student—just edit `index.html` and add the corresponding image to `images/people/`.
