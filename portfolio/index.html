@@ -677,6 +677,16 @@ const SITES = [
   "event": "Heritage Documentation (PhD era)"
  },
  {
+  "id": "nepal",
+  "name": "Kathmandu Valley, Nepal",
+  "event": "2015 Gorkha Earthquake"
+ },
+ {
+  "id": "havana",
+  "name": "Havana, Cuba",
+  "event": "Heritage Documentation (PhD era)"
+ },
+ {
   "id": "venezuela",
   "name": "Venezuela",
   "event": "2026 Earthquake Sequence"
@@ -734,6 +744,14 @@ const SITE_COORDS = {
  "rome": [
   12.4853,
   41.8925
+ ],
+ "nepal": [
+  85.4294,
+  27.6716
+ ],
+ "havana": [
+  -82.4548,
+  23.0894
  ],
  "venezuela": [
   -68.6722,
@@ -1378,6 +1396,66 @@ const ASSETS = [
   "url": "https://www.cranfield.ac.uk/events/events-2025/beyond-visual-inspection",
   "year": 2025,
   "notes": "Talk at Cranfield University by Kallas & Napolitano"
+ },
+ {
+  "title": "Digital Recording and Non-Destructive Techniques for the Understanding of Structural Performance for Rehabilitating Historic Structures at the Kathmandu Valley after Gorkha Earthquake 2015",
+  "site": "nepal",
+  "types": [
+   "paper"
+  ],
+  "url": "https://doi.org/10.5194/isprs-annals-iv-2-w2-243-2017",
+  "doi": "10.5194/isprs-annals-iv-2-w2-243-2017",
+  "journal": "ISPRS Annals of the Photogrammetry, Remote Sensing and Spatial Information Sciences",
+  "year": 2017,
+  "authors": "Shrestha, Reina Ortiz, Gutland, Napolitano, Morris, Santana Quintero, Erochko, Kawan, et al."
+ },
+ {
+  "title": "Digital Recording and Non Destructive Investigation of Nyatapola Temple after Gorkha Earthquake 2015",
+  "site": "nepal",
+  "types": [
+   "paper"
+  ],
+  "url": "https://openarchive.icomos.org/2035/",
+  "journal": "ICOMOS 19th General Assembly and Scientific Symposium, New Delhi",
+  "year": 2018,
+  "authors": "Shrestha, Reina Ortiz, Gutland, Morris, Napolitano, Santana Quintero, Erochko, Kawan",
+  "notes": "Laser scanning, photogrammetry, GPR and micro-tremor study of Nyatapola Temple, Bhaktapur"
+ },
+ {
+  "title": "Virtual Tour Environment of Cuba's National School of Art",
+  "site": "havana",
+  "types": [
+   "paper"
+  ],
+  "url": "https://doi.org/10.5194/isprs-archives-xlii-2-w5-547-2017",
+  "doi": "10.5194/isprs-archives-xlii-2-w5-547-2017",
+  "journal": "ISPRS Archives of the Photogrammetry, Remote Sensing and Spatial Information Sciences",
+  "year": 2017,
+  "authors": "Napolitano, Douglas, Garlock, Glisic"
+ },
+ {
+  "title": "Reconsidering the Vaulted Forms of Cuba's National School of Ballet",
+  "site": "havana",
+  "types": [
+   "paper"
+  ],
+  "url": "https://doi.org/10.1007/978-3-319-99441-3_231",
+  "doi": "10.1007/978-3-319-99441-3_231",
+  "journal": "Structural Analysis of Historical Constructions (RILEM Bookseries)",
+  "year": 2019,
+  "authors": "Douglas, Napolitano, Garlock, Glisic"
+ },
+ {
+  "title": "Cuba's National School of Ballet: Redefining a structural icon",
+  "site": "havana",
+  "types": [
+   "paper"
+  ],
+  "url": "https://doi.org/10.1016/j.engstruct.2019.110040",
+  "doi": "10.1016/j.engstruct.2019.110040",
+  "journal": "Engineering Structures",
+  "year": 2020,
+  "authors": "Douglas, Napolitano, Garlock, Glisic"
  }
 ];
 const GAPS = [];
@@ -1538,9 +1616,9 @@ function renderGaps() {
 // ---- Map view ----
 
 const REGIONS = [
-  { id: "world", label: "All sites", box: [[-96, 2], [42, 52]] },
+  { id: "world", label: "All sites", box: [[-96, 2], [92, 52]] },
   { id: "us", label: "Eastern US", box: [[-92, 33.5], [-66, 46]] },
-  { id: "carib", label: "Caribbean & Venezuela", box: [[-82, 8], [-64, 20.5]] },
+  { id: "carib", label: "Caribbean & Venezuela", box: [[-86, 8], [-64, 24.5]] },
   { id: "med", label: "Mediterranean & Black Sea", box: [[8, 31.5], [38, 48.5]] },
 ];
 
