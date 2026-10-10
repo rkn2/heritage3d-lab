@@ -604,10 +604,6 @@
 
 <div class="filters">
   <div class="filter-row">
-    <span class="filter-label">Site</span>
-    <div id="site-filters"></div>
-  </div>
-  <div class="filter-row">
     <span class="filter-label">Type</span>
     <div id="type-filters"></div>
   </div>
@@ -1499,17 +1495,7 @@ function renderCounts() {
 }
 
 function renderFilters() {
-  const siteContainer = document.getElementById("site-filters");
   const typeContainer = document.getElementById("type-filters");
-
-  let siteHTML = '<button class="chip active" data-site="all">All</button>';
-  for (const s of SITES) {
-    const key = s.id || "_cross";
-    const count = ASSETS.filter(a => (a.site || null) === s.id).length;
-    if (count === 0) continue;
-    siteHTML += `<button class="chip" data-site="${key}">${s.name} <span style="opacity:0.5">${count}</span></button>`;
-  }
-  siteContainer.innerHTML = siteHTML;
 
   let typeHTML = '<button class="chip active" data-type="all">All</button>';
   for (const [key, label] of Object.entries(TYPE_LABELS)) {
@@ -1522,16 +1508,6 @@ function renderFilters() {
     document.head.appendChild(style);
   }
   typeContainer.innerHTML = typeHTML;
-
-  siteContainer.addEventListener("click", e => {
-    const btn = e.target.closest(".chip");
-    if (!btn) return;
-    siteContainer.querySelectorAll(".chip").forEach(c => c.classList.remove("active"));
-    btn.classList.add("active");
-    const val = btn.dataset.site;
-    activeSite = val === "all" ? null : (val === "_cross" ? "_cross" : val);
-    refresh();
-  });
 
   typeContainer.addEventListener("click", e => {
     const btn = e.target.closest(".chip");
@@ -1693,9 +1669,6 @@ function siteCount(siteId) {
 
 function selectSite(siteId) {
   activeSite = activeSite === siteId ? null : siteId;
-  const key = activeSite === null ? "all" : activeSite;
-  document.querySelectorAll("#site-filters .chip").forEach(c =>
-    c.classList.toggle("active", c.dataset.site === key));
   refresh();
 }
 
