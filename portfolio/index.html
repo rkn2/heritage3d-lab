@@ -683,6 +683,11 @@ const SITES = [
   "event": "Heritage Documentation (PhD era)"
  },
  {
+  "id": "sao-luis",
+  "name": "São Luís, Brazil",
+  "event": "Adaptive Reuse of Sobrado Buildings"
+ },
+ {
   "id": "venezuela",
   "name": "Venezuela",
   "event": "2026 Earthquake Sequence"
@@ -748,6 +753,10 @@ const SITE_COORDS = {
  "havana": [
   -82.4548,
   23.0894
+ ],
+ "sao-luis": [
+  -44.3028,
+  -2.5297
  ],
  "venezuela": [
   -68.6722,
@@ -1452,6 +1461,56 @@ const ASSETS = [
   "journal": "Engineering Structures",
   "year": 2020,
   "authors": "Douglas, Napolitano, Garlock, Glisic"
+ },
+ {
+  "title": "A Grammar Based Methodology to Support the Adaptive Reuse of Historic Buildings: The Case Study of the Sobrado Building Type",
+  "site": "sao-luis",
+  "types": [
+   "paper"
+  ],
+  "url": "https://doi.org/10.5194/isprs-archives-xlvi-m-1-2021-515-2021",
+  "doi": "10.5194/isprs-archives-xlvi-m-1-2021-515-2021",
+  "journal": "ISPRS Archives of the Photogrammetry, Remote Sensing and Spatial Information Sciences",
+  "year": 2021,
+  "authors": "Paulino, Napolitano, Ligler, Bak, Hogan, Moreno"
+ },
+ {
+  "title": "A Grammar-Based Approach for Generating Spatial Layout Solutions for the Adaptive Reuse of Sobrado Buildings",
+  "site": "sao-luis",
+  "types": [
+   "paper"
+  ],
+  "url": "https://doi.org/10.3390/buildings13030722",
+  "doi": "10.3390/buildings13030722",
+  "journal": "Buildings",
+  "year": 2023,
+  "authors": "Paulino, Ligler, Napolitano",
+  "notes": "Shape grammar for converting single-family sobrados into multi-family apartments"
+ },
+ {
+  "title": "Automating the Adaptive Reuse of Cultural Heritage: A computational framework for reconfiguring historic masonry buildings",
+  "site": "sao-luis",
+  "types": [
+   "paper"
+  ],
+  "url": "https://doi.org/10.52842/conf.ecaade.2023.2.691",
+  "doi": "10.52842/conf.ecaade.2023.2.691",
+  "journal": "eCAADe 2023 Proceedings",
+  "year": 2023,
+  "authors": "Melo Santos Paulino, Lewis, Napolitano, Ligler",
+  "notes": "Rhino script and Python implementation of the sobrado transformation rules"
+ },
+ {
+  "title": "The Reviver Grammar: transforming the historic center of São Luís through social housing",
+  "site": "sao-luis",
+  "types": [
+   "paper"
+  ],
+  "url": "https://doi.org/10.5151/sigradi2022-sigradi2022_94",
+  "doi": "10.5151/sigradi2022-sigradi2022_94",
+  "journal": "SIGraDi 2022 (Blucher Design Proceedings)",
+  "year": 2023,
+  "authors": "Paulino, Knapp, Ligler, Napolitano"
  }
 ];
 const GAPS = [];
@@ -1592,7 +1651,7 @@ function renderGaps() {
 // ---- Map view ----
 
 const REGIONS = [
-  { id: "world", label: "All sites", box: [[-96, 2], [92, 52]] },
+  { id: "world", label: "All sites", box: [[-96, -6], [92, 52]] },
   { id: "us", label: "Eastern US", box: [[-92, 33.5], [-66, 46]] },
   { id: "carib", label: "Caribbean & Venezuela", box: [[-86, 8], [-64, 24.5]] },
   { id: "med", label: "Mediterranean & Black Sea", box: [[8, 31.5], [38, 48.5]] },
